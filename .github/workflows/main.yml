@@ -1,4 +1,4 @@
-name: Build and SonarQube Analysis
+je name: Build and SonarQube Analysis
 
 on:
   push:
@@ -43,5 +43,5 @@ jobs:
           cd build
           cd distributions
           unzip *.zip
-          cd sonar-application-25.3-SNAPSHOT
+          cd sonarqube-25.3-SNAPSHOT
           ./bin/linux-x86-64/sonar.sh start
