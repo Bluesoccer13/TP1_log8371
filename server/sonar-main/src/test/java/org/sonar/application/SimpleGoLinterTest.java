@@ -1,7 +1,9 @@
 package org.sonar.application;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class SimpleGoLinterTest {
 
@@ -23,6 +25,7 @@ public class SimpleGoLinterTest {
   public void testLineLength() {
     SimpleGoLinter linter = new SimpleGoLinter();
     assertTrue(linter.isLineLengthValid("Short line"));
-    assertFalse(linter.isLineLengthValid("This is a very long line that exceeds eighty characters in length."));
+    assertFalse(linter.isLineLengthValid(
+        "This is a very long line that exceeds eighty characters in length. This is a very long line that exceeds eighty characters in length."));
   }
 }
