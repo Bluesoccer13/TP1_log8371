@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - master
+
 jobs:
   build_sonarqube:
     runs-on: ubuntu-latest
@@ -16,11 +17,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
 
       - name: Install Dependencies
         run: |
-          apt-get update && apt-get install -y git && apt-get install -y git unzip
+          apt-get update && apt-get install -y git unzip
 
       - name: Build with Gradle without test
         run: ./gradlew build -x test
@@ -33,12 +34,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-log
-          path: build.log.gz 
+          path: build.log.gz
           retention-days: 7
 
-      - name: Unzip app and Launch
+      - name: Unzip App and Launch SonarQube
         run: |
-          cd sonar-application/build/distributions/
+          cd server/sonar-application/build/distributions/
           unzip sonar-application-25.2-SNAPSHOT.zip
-          cd sonarqube-25.2-SNAPSHOT
+          cd sonar-application-25.2-SNAPSHOT
           ./bin/linux-x86-64/sonar.sh start
