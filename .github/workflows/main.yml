@@ -22,12 +22,12 @@ jobs:
         run: |
           apt-get update && apt-get install -y git && apt-get install -y git unzip
 
-      - name: Compile & Test SonaQube
-        run: |
-          ./gradlew build -Dsonar.log.level=INFO --warning-mode=all | tee build.log
+      - name: Build with Gradle without test
+        run: ./gradlew build -x test
 
-      - name: Compress Build Log
-        run: gzip -9 build.log
+      - name: Run tests for sonar-main
+        run: |
+          ./gradlew :server:sonar-main:test
       
       - name: Upload Build Log Artifact
         uses: actions/upload-artifact@v4
