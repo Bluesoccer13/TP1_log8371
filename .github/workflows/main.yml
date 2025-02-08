@@ -1,4 +1,4 @@
-je name: Build and SonarQube Analysis
+name: Build and SonarQube Analysis
 
 on:
   push:
