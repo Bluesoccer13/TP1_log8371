@@ -42,6 +42,6 @@ jobs:
           cd sonar-application
           cd build
           cd distributions
-          unzip sonar-application-25.2-SNAPSHOT.zip
+          unzip *.zip
           cd sonar-application-25.2-SNAPSHOT
           ./bin/linux-x86-64/sonar.sh start
