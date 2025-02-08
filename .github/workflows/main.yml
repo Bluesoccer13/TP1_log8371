@@ -39,7 +39,9 @@ jobs:
 
       - name: Unzip App and Launch SonarQube
         run: |
-          cd sonar-application/build/distributions/
+          cd sonar-application
+          cd build
+          cd distributions
           unzip sonar-application-25.2-SNAPSHOT.zip
           cd sonar-application-25.2-SNAPSHOT
           ./bin/linux-x86-64/sonar.sh start
