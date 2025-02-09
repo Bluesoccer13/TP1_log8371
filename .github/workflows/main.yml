@@ -23,7 +23,7 @@ jobs:
         run: |
           apt-get update && apt-get install -y git unzip
 
-      - name: Build with Gradle without test
+      - name: Build with Gradle and test SonarQube
         run: ./gradlew build 
 
       - name: Unzip App and Launch SonarQube
