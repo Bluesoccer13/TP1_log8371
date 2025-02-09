@@ -26,17 +26,6 @@ jobs:
       - name: Build with Gradle without test
         run: ./gradlew build 
 
-      # - name: Run tests for sonar-main
-      #   run: |
-      #     ./gradlew test
-      
-      # - name: Upload Build Log Artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: build-log
-      #     path: build.log.gz
-      #     retention-days: 7
-
       - name: Unzip App and Launch SonarQube
         run: |
           cd sonar-application
