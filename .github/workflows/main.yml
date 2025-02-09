@@ -30,12 +30,12 @@ jobs:
       #   run: |
       #     ./gradlew test
       
-      - name: Upload Build Log Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-log
-          path: build.log.gz
-          retention-days: 7
+      # - name: Upload Build Log Artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: build-log
+      #     path: build.log.gz
+      #     retention-days: 7
 
       - name: Unzip App and Launch SonarQube
         run: |
