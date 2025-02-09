@@ -24,11 +24,11 @@ jobs:
           apt-get update && apt-get install -y git unzip
 
       - name: Build with Gradle without test
-        run: ./gradlew build -x test
+        run: ./gradlew build 
 
-      - name: Run tests for sonar-main
-        run: |
-          ./gradlew test
+      # - name: Run tests for sonar-main
+      #   run: |
+      #     ./gradlew test
       
       - name: Upload Build Log Artifact
         uses: actions/upload-artifact@v4
