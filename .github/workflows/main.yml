@@ -28,7 +28,7 @@ jobs:
 
       - name: Run tests for sonar-main
         run: |
-          ./gradlew :server:sonar-main:test
+          ./gradlew test
       
       - name: Upload Build Log Artifact
         uses: actions/upload-artifact@v4
