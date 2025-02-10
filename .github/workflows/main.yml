@@ -22,6 +22,9 @@ jobs:
       - name: Install Dependencies
         run: |
           apt-get update && apt-get install -y git unzip
+        
+      - name: Installer les dépendances Python
+        run: pip install requests
 
       - name: Build with Gradle and test SonarQube
         run: ./gradlew build test
@@ -34,3 +37,6 @@ jobs:
           unzip *.zip
           cd sonarqube-25.3-SNAPSHOT
           ./bin/linux-x86-64/sonar.sh start
+
+      - name: Vérifier la disponibilité de SonarQube
+        run: python test_sonarqube_availability.py
