@@ -24,15 +24,8 @@ jobs:
           apt-get update && apt-get install -y git unzip
 
       - name: Build with Gradle and test SonarQube
-        run: ./gradlew build 
+        run: ./gradlew build test
         
-      - name: Print Test Results
-        if: always()
-        run: |
-          echo "==== TEST RESULTS ===="
-          cat build/reports/tests/test/index.html || true
-          cat build/test-results/test/*.xml || true
-          
       - name: Unzip App and Launch SonarQube
         run: |
           cd sonar-application
