@@ -30,11 +30,11 @@ jobs:
       - name: Set up Virtual Environment
         run: |
           python3 -m venv venv
-          source venv/bin/activate
+          . venv/bin/activate
 
       - name: Install Python Dependencies
         run: |
-          source venv/bin/activate
+          . venv/bin/activate
           pip install requests
 
       - name: Build with Gradle and test SonarQube
@@ -51,5 +51,5 @@ jobs:
 
       - name: Vérifier la disponibilité de SonarQube
         run: |
-          source venv/bin/activate
+          . venv/bin/activate
           python test_sonarqube_availability.py
