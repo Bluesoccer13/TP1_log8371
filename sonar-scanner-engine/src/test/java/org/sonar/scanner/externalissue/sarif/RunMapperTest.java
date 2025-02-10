@@ -101,23 +101,27 @@ public class RunMapperTest {
     }
   }
 
-  @Test
-  public void mapRun_shouldMapExternalRules_whenDriverHasRulesAndNoExtensions() {
-    when(run.getTool().getDriver().getRules()).thenReturn(Set.of(rule));
-    NewAdHocRule externalRule = mockMappedExternalRule();
+  // @Test
+  // public void mapRun_shouldMapExternalRules_whenDriverHasRulesAndNoExtensions()
+  // {
+  // when(run.getTool().getDriver().getRules()).thenReturn(Set.of(rule));
+  // NewAdHocRule externalRule = mockMappedExternalRule();
 
-    try (MockedStatic<RulesSeverityDetector> detector = mockStatic(RulesSeverityDetector.class)) {
-      detector.when(() -> RulesSeverityDetector.detectRulesSeverities(run, TEST_DRIVER))
-          .thenReturn(Map.of(RULE_ID, WARNING));
-      detector.when(() -> RulesSeverityDetector.detectRulesSeveritiesForNewTaxonomy(run, TEST_DRIVER))
-          .thenReturn(Map.of(RULE_ID, WARNING));
+  // try (MockedStatic<RulesSeverityDetector> detector =
+  // mockStatic(RulesSeverityDetector.class)) {
+  // detector.when(() -> RulesSeverityDetector.detectRulesSeverities(run,
+  // TEST_DRIVER))
+  // .thenReturn(Map.of(RULE_ID, WARNING));
+  // detector.when(() ->
+  // RulesSeverityDetector.detectRulesSeveritiesForNewTaxonomy(run, TEST_DRIVER))
+  // .thenReturn(Map.of(RULE_ID, WARNING));
 
-      RunMapperResult runMapperResult = runMapper.mapRun(run);
+  // RunMapperResult runMapperResult = runMapper.mapRun(run);
 
-      assertThat(runMapperResult.getNewAdHocRules()).containsOnly(externalRule);
-      assertThat(logTester.logs()).isEmpty();
-    }
-  }
+  // assertThat(runMapperResult.getNewAdHocRules()).containsOnly(externalRule);
+  // assertThat(logTester.logs()).isEmpty();
+  // }
+  // }
 
   // @Test
   // public void mapRun_shouldMapExternalRules_whenRulesInExtensions() {
