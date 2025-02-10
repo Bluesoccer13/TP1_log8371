@@ -23,32 +23,9 @@ jobs:
         run: |
           apt-get update && apt-get install -y git unzip
 
-      # - name: Build with Gradle and test SonarQube
-      #   run: ./gradlew build test
-      - name: Build with Gradle
-        run: ./gradlew build -x test
+      - name: Build with Gradle and test SonarQube
+        run: ./gradlew build test
 
-      - name: Run Tests and Print Results
-        run: |
-          ./gradlew test --info | tee test-results.log
-          echo "=== TEST SUMMARY ==="
-          grep -A 20 "Test run finished after" test-results.log || true
-
-      - name: Upload Test Reports as Artifact
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Test Reports
-          path: build/reports/tests/test/
-          retention-days: 7
-
-      - name: Upload Raw Test Logs
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Test Logs
-          path: test-results.log
-          retention-days: 7
       - name: Unzip App and Launch SonarQube
         run: |
           cd sonar-application
