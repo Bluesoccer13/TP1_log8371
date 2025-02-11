@@ -44,7 +44,8 @@ jobs:
 
       - name: Run Load Test with JMeter
         run: |
-          jmeter -n -t tests/sonarqube_load_test.jmx -l test_results.jtl -o test_report
+          jmeter -n -t tests/sonarqube_load_test.jmx -l test_results.jtl -g test_report
+
           
       - name: Upload JMeter Report
         uses: actions/upload-artifact@v4
