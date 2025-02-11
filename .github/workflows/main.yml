@@ -48,6 +48,11 @@ jobs:
           unzip *.zip
           cd sonarqube-25.3-SNAPSHOT
           ./bin/linux-x86-64/sonar.sh start
+      
+      - name: Check SonarQube Port
+        run: |
+          sleep 10  # Wait for SonarQube to start
+          netstat -tulnp | grep java || ss -tulnp | grep java
 
       - name: Vérifier la disponibilité de SonarQube
         run: |
