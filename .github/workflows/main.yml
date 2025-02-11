@@ -42,11 +42,11 @@ jobs:
 
       - name: Unzip App and Launch SonarQube
         run: |
-          cd sonar-application
-          cd build
-          cd distributions
+          cd sonar-application/build/distributions
           unzip *.zip
           cd sonarqube-25.3-SNAPSHOT
+          sed -i 's/#sonar.web.port=9000/sonar.web.port=9000/' conf/sonar.properties
+          sed -i 's/#sonar.web.host=127.0.0.1/sonar.web.host=0.0.0.0/' conf/sonar.properties
           ./bin/linux-x86-64/sonar.sh start
       
       - name: Install Networking Tools
