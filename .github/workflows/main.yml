@@ -42,21 +42,12 @@ jobs:
 
       - name: Unzip App and Launch SonarQube
         run: |
-          cd sonar-application/build/distributions
+          cd sonar-application
+          cd build
+          cd distributions
           unzip *.zip
           cd sonarqube-25.3-SNAPSHOT
-          sed -i 's/#sonar.web.port=9000/sonar.web.port=9000/' conf/sonar.properties
-          sed -i 's/#sonar.web.host=127.0.0.1/sonar.web.host=0.0.0.0/' conf/sonar.properties
           ./bin/linux-x86-64/sonar.sh start
-      
-      - name: Install Networking Tools
-        run: |
-          apt-get update && apt-get install -y net-tools iproute2
-          
-      - name: Check SonarQube Port
-        run: |
-          sleep 10  # Wait for SonarQube to start
-          netstat -tulnp | grep java || ss -tulnp | grep java
 
       - name: Vérifier la disponibilité de SonarQube
         run: |
