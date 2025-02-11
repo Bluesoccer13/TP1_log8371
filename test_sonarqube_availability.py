@@ -2,7 +2,7 @@ import requests
 
 
 def test_sonarqube_availability():
-    url = "http://localhost:9000/"
+    url = "http://localhost:9001/"
     try:
         response = requests.get(url, timeout=5)
         if response.status_code == 200:

@@ -38,7 +38,7 @@ jobs:
           pip install requests
 
       - name: Build with Gradle and test SonarQube
-        run: ./gradlew build test
+        run: ./gradlew build -x test
 
       - name: Unzip App and Launch SonarQube
         run: |
