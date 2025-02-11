@@ -49,6 +49,10 @@ jobs:
           cd sonarqube-25.3-SNAPSHOT
           ./bin/linux-x86-64/sonar.sh start
       
+      - name: Install Networking Tools
+        run: |
+          apt-get update && apt-get install -y net-tools iproute2
+          
       - name: Check SonarQube Port
         run: |
           sleep 10  # Wait for SonarQube to start
