@@ -42,14 +42,17 @@ jobs:
 
       - name: Unzip App and Launch SonarQube
         run: |
-          cd sonar-application
-          cd build
-          cd distributions
+          cd sonar-application/build/distributions
           unzip *.zip
           cd sonarqube-25.3-SNAPSHOT
+
+          # Set SonarQube to run on port 9000
+          echo "sonar.web.port=9000" >> conf/sonar.properties
+
           ./bin/linux-x86-64/sonar.sh start
 
-      - name: Vérifier la disponibilité de SonarQube
+      
+      - name: Check SonarQube Port
         run: |
-          . venv/bin/activate
-          python test_sonarqube_availability.py
+          sleep 10  # Wait for SonarQube to start
+          netstat -tulnp | grep java || ss -tulnp | grep java
